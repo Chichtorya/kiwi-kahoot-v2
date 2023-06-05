@@ -1,0 +1,13 @@
+không cần login => không lộ tài khoản
+chỉ cần đăng nhập bằng mạng nội bộ  
+1. Vào web
+2. Nhập mã pin (mã pin do host tạo)
+3. Nhập Nick name (check nick name có tồn tại trong phòng hay không >?)
+4. Save tạm thời nickname và score trên máy client (profile : nickname, score) (chưa lưu trên data server)
+5. Ấn finish game , save mã pin , nick name, score vào database server  
+
+Format mã pin Day + số thứ tự game trong ngày + số hoặc chữ tùy host 
+- Day : để có thể tìm lại trận theo ngày
+- Số trận : để tìm theo số game đã chơi trong ngày đó
+- số hoặc chữ tùy host : tránh bị người chơi đoán ra mã pin 
+tại sao cần tránh người chơi đoán ra mã pin ? trong trường hợp 2 người bằng điểm thì tính xem ai hoàn thành trước khi cùng bắt đầu 1 mốc thời gian
