@@ -4,6 +4,7 @@
   "engines": {
     "node": "16.15.1"
   },
+  "homepage": "./",
   "private": true,
   "dependencies": {
     "@babel/runtime": "^7.22.3",
@@ -71,7 +72,7 @@
   "browser": {
     "crypto": false
   },
-  "homepage": "https://github.com/Chichtorya/kahoot_clone_kiwi",
+
   "browserslist": {
     "production": [
       ">0.2%",
