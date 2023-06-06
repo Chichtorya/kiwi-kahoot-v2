@@ -27,7 +27,7 @@ class change extends Component {
         
 
         if (username && password) {
-            //    axios.post("http://localhost:3030/change", { username, password })
+          
             axios.post(url, { username, password })
                 .then((res) => {
                     const { message, id } = res.data;
