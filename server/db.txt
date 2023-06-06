@@ -1,0 +1,226 @@
+CONNECTION_STRING="postgres://postgres:sa@localhost:5432/kiwi"
+CREATE TABLE public.questions (
+    id integer NOT NULL,
+    quiz_id integer,
+    question character varying(512),
+    answer1 character varying(128),
+    answer2 character varying(128),
+    answer3 character varying(128),
+    answer4 character varying(128),
+    correctanswer integer
+);
+
+
+ALTER TABLE public.questions OWNER TO postgres;
+
+--
+-- Name: questions_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.questions_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.questions_id_seq OWNER TO postgres;
+
+--
+-- Name: questions_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.questions_id_seq OWNED BY public.questions.id;
+
+
+--
+-- Name: quizes; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.quizes (
+    id integer NOT NULL,
+    user_id integer,
+    quiz_name character varying(128),
+    info character varying(256)
+);
+
+
+ALTER TABLE public.quizes OWNER TO postgres;
+
+--
+-- Name: quizes_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.quizes_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.quizes_id_seq OWNER TO postgres;
+
+--
+-- Name: quizes_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.quizes_id_seq OWNED BY public.quizes.id;
+
+
+--
+-- Name: users; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.users (
+    id integer NOT NULL,
+    user_name character varying(124),
+    auth_id text,
+    pass character varying(256)
+);
+
+
+ALTER TABLE public.users OWNER TO postgres;
+
+--
+-- Name: users_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.users_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.users_id_seq OWNER TO postgres;
+
+--
+-- Name: users_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.users_id_seq OWNED BY public.users.id;
+
+
+--
+-- Name: questions id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.questions ALTER COLUMN id SET DEFAULT nextval('public.questions_id_seq'::regclass);
+
+
+--
+-- Name: quizes id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.quizes ALTER COLUMN id SET DEFAULT nextval('public.quizes_id_seq'::regclass);
+
+
+--
+-- Name: users id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.users ALTER COLUMN id SET DEFAULT nextval('public.users_id_seq'::regclass);
+
+
+--
+-- Data for Name: questions; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.questions (id, quiz_id, question, answer1, answer2, answer3, answer4, correctanswer) FROM stdin;
+4       1       What is the capital of France?  Paris   Madrid  Berlin  New York        1
+5       1       What is the largest country by area?    Russia  China   Australia       Brazil  1
+6       1       What is the smallest continent? Australia       Europe  South America   Antarctica      4
+7       1       Who painted the Mona Lisa?      Leonardo da Vinci       Michelangelo    Pablo Picasso   Rembrandt       1
+8       3       What is the tallest mammal in the world?        giraffe elephant        rhinoceros      hippopotamus    1
+9       3       What is the smallest planet in our solar system?        Mercury Venus   Mars    Pluto   1
+10      3       What is the biggest animal on earth?    blue whale      elephant        giraffe ostrich 1
+11      3       Which planet is known as the Red Planet?        Mars    Jupiter Saturn  Neptune 1
+12      4       Who wrote "To Kill a Mockingbird"?      Harper Lee      Ernest Hemingway        F. Scott Fitzgerald     William Faulkner        1
+13      4       In what year did World War I begin?     1914    1939    1945    1918    1
+14      4       Who invented the telephone?     Alexander Graham Bell   Thomas Edison   Benjamin Franklin       Nikola Tesla    1
+15      4       Who directed the movie "Jaws"?  Steven Spielberg        George Lucas    Martin Scorsese Francis Ford Coppola    1
+1       1       who am I?       god     grabbo-guy      Duy ANh dill    4
+3       2       where in the world is Carmen SanDiego?  here    there   Witness Protection      st wrong        4
+2       1       can dogs look up?       yes     no      in Australia    hoi gi ki zay cha       3
+18      5       ai dep trai nhat fpt    t       bo m    hihi    duy anh 1
+19      12      ss9-1   ss9-1   ss9-1   ss9-1   ss9-1   1
+17      1       st to test      asd     asd     dd      da      1
+\.
+
+
+--
+-- Data for Name: quizes; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.quizes (id, user_id, quiz_name, info) FROM stdin;
+2       1       second Quiz     another quizz. Neeter
+3       3       Third Sample Quiz       This is our second sample quiz.
+4       3       Second Sample Quiz      This is our Third sample quiz.
+5       \N      FPT     FPT t1
+6       \N      fpt 3   s
+7       \N      FPT 4   st to test ss4
+8       \N      SS5     SS5
+1       3       ss1v15  demo
+\.
+
+
+--
+-- Data for Name: users; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.users (id, user_name, auth_id, pass) FROM stdin;
+3       user1   auth_id_1       pass1
+4       user2   auth_id_2       pass2
+5       user3   auth_id_3       pass3
+\.
+
+
+--
+-- Name: questions_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.questions_id_seq', 21, true);
+
+
+--
+-- Name: quizes_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.quizes_id_seq', 13, true);
+
+
+--
+-- Name: users_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.users_id_seq', 5, true);
+
+
+--
+-- Name: questions questions_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.questions
+    ADD CONSTRAINT questions_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: quizes quizes_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.quizes
+    ADD CONSTRAINT quizes_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: users users_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.users
+    ADD CONSTRAINT users_pkey PRIMARY KEY (id);
