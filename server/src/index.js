@@ -172,7 +172,9 @@ const { result } = require('lodash');
     /////////////////// DB calls for quizzes
 
     //Get
-
+    app.get('/check', (req, res) => {
+        res.send('Server deploy success')
+      })
     app.get('/getQuizzes', quizCtrl.getQuizzes)
     app.get('/getquestions/', quizCtrl.getQuestions)
     app.get('/getquestion/', quizCtrl.getQuestion)
