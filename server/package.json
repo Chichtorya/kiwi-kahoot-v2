@@ -30,7 +30,7 @@
     "vercel": "^30.1.2"
   },
   "scripts": {
-    "start": "nodemon ./src/index.js"
+    "start": "node ./src/index.js"
   },
   "author": "duyanh",
   "license": "ISC",
