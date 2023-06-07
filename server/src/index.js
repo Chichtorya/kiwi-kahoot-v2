@@ -86,7 +86,12 @@ const { result } = require('lodash');
         console.log(err.context);  // some additional error context
     });
     const pgp = require('pg-promise')();
-    const db = pgp(process.env.CONNECTION_STRING)
+    const db = pgp({
+        connectionString: process.env.CONNECTION_STRING,
+        ssl: {
+          rejectUnauthorized: false
+        }
+      });
 
     db.connect()
         .then(function (obj) {

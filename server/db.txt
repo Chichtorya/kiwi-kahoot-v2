@@ -1,3 +1,4 @@
+S2m27SeAn7OvanKa
 CONNECTION_STRING="postgres://postgres:sa@localhost:5432/kiwi"
 CREATE TABLE public.questions (
     id integer NOT NULL,
