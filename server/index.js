@@ -7,8 +7,8 @@ const { result } = require('lodash');
         , path = require('path')
         , fs = require('fs')
         , bodyParser = require('body-parser')
-        , quizCtrl = require('../quizCtrl')
-        , { Quiz } = require('../utils/quiz');
+        , quizCtrl = require('./quizCtrl')
+        , { Quiz } = require('./utils/quiz');
 
 
     const app = require('express')()
@@ -79,7 +79,6 @@ const { result } = require('lodash');
             console.log(reason); // prints the message associated with the error, e.g. "thou shall not pass" in the example above
         });
     })
-
 
 
     io.engine.on("connection_error", (err) => {

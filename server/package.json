@@ -1,7 +1,7 @@
 {
   "name": "serverkiwi",
   "version": "1.0.0",
-  "main": "./src/index.js",
+  "main": "index.js",
   "engines": {
     "node": "16.20.0"
   },
@@ -30,7 +30,7 @@
     "vercel": "^30.1.2"
   },
   "scripts": {
-    "start": "node ./src/index.js"
+    "start": "nodemon index.js"
   },
   "author": "duyanh",
   "license": "ISC",
