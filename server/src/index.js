@@ -9,8 +9,8 @@ const { result } = require('lodash');
 
         , bodyParser = require('body-parser')
 
-        , quizCtrl = require('./quizCtrl')
-        , { Quiz } = require('./utils/quiz');
+        , quizCtrl = require('../quizCtrl')
+        , { Quiz } = require('../utils/quiz');
 
     const fs = require('fs')
     const app = require('express')()
@@ -21,7 +21,7 @@ const { result } = require('lodash');
     app.use(cors({
         origin: "*",
     }))
-
+    console.log(process.cwd());
     const io = require('socket.io')(server
     )
 
