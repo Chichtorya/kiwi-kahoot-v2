@@ -40,11 +40,10 @@ const { result } = require('lodash');
     //     CONNECTION_STRING,
     //     FRONTEND_URL,
     // } = require('./cfg.js')
-
-    server.listen(process.env.SERVER_PORT, '0.0.0.0', () => {
-        console.log('listening on *:', process.env.SERVER_PORT);
-    });
-    // console.log(server.address());
+    server.listen(process.env.SERVER_PORT, '0.0.0.0', function() {
+        console.log('Server running at ', process.env.SERVER_PORT);
+        console.log(server.address());
+      });
 
     //When a connection to server is made from client
     io.on('connection', socket => {
