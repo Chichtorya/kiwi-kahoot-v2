@@ -10,13 +10,12 @@ const { result } = require('lodash');
         , quizCtrl = require('./quizCtrl')
         , { Quiz } = require('./utils/quiz');
 
-const https = require('https')
-const options = {
-    key: fs.readFileSync("./cert/key.pem"),
-        cert: fs.readFileSync("./cert/cert.pem")
-  };
+
     const app = require('express')()
-    const server = https.createServer(options, app);
+    const server = require('https').createServer(  {
+        key: fs.readFileSync("./cert/key.pem"),
+        cert: fs.readFileSync("./cert/cert.pem"),
+      }, app)
 
     // const app = require('express')()
     // const server = require('http').createServer( 
@@ -43,7 +42,7 @@ const options = {
     // } = require('./cfg.js')
 
     server.listen(process.env.SERVER_PORT, () => {
-        console.log('HTTPS listening on *:', process.env.SERVER_PORT);
+        console.log('listening on *:', process.env.SERVER_PORT);
     });
     // console.log(server.address());
 

@@ -15,6 +15,7 @@
     "engine.io": "^3.2.1",
     "express": "^4.16.3",
     "express-session": "^1.15.6",
+    "https": "^1.0.0",
     "lodash": "^4.17.10",
     "make-runnable": "^1.4.1",
     "nodemon": "^2.0.20",
@@ -35,7 +36,6 @@
   },
   "author": "duyanh",
   "license": "ISC",
-  "devDependencies": {},
   "keywords": [],
   "description": ""
 }
