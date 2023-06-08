@@ -11,15 +11,15 @@ const { result } = require('lodash');
         , { Quiz } = require('./utils/quiz');
 
 
-    // const app = require('express')()
-    // const server = require('http').createServer(  {
-    //     key: fs.readFileSync("./cert/key.pem"),
-    //     cert: fs.readFileSync("./cert/cert.pem"),
-    //   }, app)
-
     const app = require('express')()
-    const server = require('http').createServer( 
-       app)
+    const server = require('https').createServer(  {
+        key: fs.readFileSync("./cert/key.pem"),
+        cert: fs.readFileSync("./cert/cert.pem"),
+      }, app)
+
+    // const app = require('express')()
+    // const server = require('http').createServer( 
+    //    app)
     
     //handle cors
     const cors = require('cors');
