@@ -16,6 +16,7 @@
     "engine.io": "^3.2.1",
     "express": "^4.16.3",
     "express-session": "^1.15.6",
+    "https": "^1.0.0",
     "lodash": "^4.17.10",
     "make-runnable": "^1.4.1",
     "npm-check": "^6.0.1",
@@ -48,13 +49,12 @@
     "build-css": "node-sass-chokidar src/ -o src/",
     "watch-css": "npm run build-css && node-sass-chokidar src/ -o src/ --watch --recursive",
     "precommit": "lint-staged",
-    "start": "react-scripts start .env",
+    "start": " react-scripts start .env",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
   "proxy": "http://localhost:3030",
-
   "devDependencies": {
     "assert": "^2.0.0",
     "buffer": "^6.0.3",
@@ -67,12 +67,10 @@
     "stream-browserify": "^3.0.0",
     "stream-http": "^3.2.0",
     "url": "^0.11.0"
-   
   },
   "browser": {
     "crypto": false
   },
-
   "browserslist": {
     "production": [
       ">0.2%",

@@ -6,7 +6,7 @@ import axios from 'axios';
 import { Redirect } from 'react-router-dom';
 import { reducer, setIdUser } from '../../Ducks/Reducer';
 import './change.css';
-
+import https from 'https';
 require('dotenv').config()
 class change extends Component {
     constructor() {
@@ -20,6 +20,7 @@ class change extends Component {
 
 
     change() {
+        const httpsAgent = new https.Agent({ rejectUnauthorized: false });
         const { username, password } = this.state;
 
         const domain = process.env.REACT_APP_DOMAIN
@@ -28,7 +29,7 @@ class change extends Component {
 
         if (username && password) {
           
-            axios.post(url, { username, password })
+            axios.post(url, { username, password }, httpsAgent)
                 .then((res) => {
                     const { message, id } = res.data;
                     if (message === 'ok') {
