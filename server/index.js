@@ -11,13 +11,15 @@ const { result } = require('lodash');
         , { Quiz } = require('./utils/quiz');
 
 
+    // const app = require('express')()
+    // const server = require('http').createServer(  {
+    //     key: fs.readFileSync("./cert/key.pem"),
+    //     cert: fs.readFileSync("./cert/cert.pem"),
+    //   }, app)
+
     const app = require('express')()
-    const server = require('https').createServer(  {
-        key: fs.readFileSync("./cert/key.pem"),
-        cert: fs.readFileSync("./cert/cert.pem"),
-      }, app)
-
-
+    const server = require('http').createServer( 
+       app)
     
     //handle cors
     const cors = require('cors');
@@ -46,7 +48,7 @@ const { result } = require('lodash');
 
     //When a connection to server is made from client
     io.on('connection', socket => {
-        console.log('Connected on port', process.env.SERVER_PORT)
+        console.log('Connected on port', process.env.SOCKET_PORT)
         // Host Connection
         socket.on('host-join', (data) => {
             socket.join(data.pin)
