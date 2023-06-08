@@ -30,6 +30,9 @@
     "vercel": "^30.1.2"
   },
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
+    "dev": "node dev",
     "start": "node index.js"
   },
   "author": "duyanh",
