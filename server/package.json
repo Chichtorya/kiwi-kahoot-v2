@@ -2,9 +2,7 @@
   "name": "serverkiwi",
   "version": "1.0.0",
   "main": "index.js",
-  "engines": {
-    "node": "16.20.0"
-  },
+
   "dependencies": {
     "@babel/runtime": "^7.22.3",
     "body-parser": "^1.18.3",
