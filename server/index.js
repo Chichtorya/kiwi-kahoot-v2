@@ -41,7 +41,7 @@ const { result } = require('lodash');
     //     FRONTEND_URL,
     // } = require('./cfg.js')
 
-    server.listen(process.env.SERVER_PORT, () => {
+    server.listen(process.env.SERVER_PORT, '0.0.0.0', () => {
         console.log('listening on *:', process.env.SERVER_PORT);
     });
     // console.log(server.address());
