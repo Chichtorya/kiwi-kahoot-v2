@@ -24,6 +24,7 @@
     "socket.io-parser": "^2.3.1"
   },
   "scripts": {
+   
     "build": "npm i",
     "start": "node index.js"
   },

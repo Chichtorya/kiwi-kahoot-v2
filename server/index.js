@@ -132,7 +132,7 @@ const { result } = require('lodash');
         const { username, password } = req.body;
 
         try {
-            db.any('SELECT * FROM users WHERE user_name = $1 AND pass = $2', [username, password])
+            db.any("SELECT * FROM users WHERE user_name = $1 AND pass = $2", [username, password])
                 .then(data => {
 
 
@@ -176,7 +176,37 @@ const { result } = require('lodash');
 
     //Get
     app.get('/check', (req, res) => {
-        res.send('Server deploy success')
+      
+        try {
+            db.any("SELECT * FROM users WHERE user_name = 'user1' AND pass = 'pass1'")
+                .then(data => {
+
+
+                    if (data.length === 1) {
+
+                        res.status(200).json({
+                            message: 'ok',
+                            id: data[0].id
+                        })
+                    } else if (data.length === 0) {
+
+                        res.status(200).json({
+                            message: 'no data'
+                        })
+                    }
+
+                    else {
+                        console.log("holy fuck , why we have 2 user same same")
+                    }
+                })
+
+        } catch (error) {
+
+            console.log(error)
+            return res.status(200).send({
+                error
+            })
+        }
     })
     app.get('/getQuizzes', quizCtrl.getQuizzes)
     app.get('/getquestions/', quizCtrl.getQuestions)
