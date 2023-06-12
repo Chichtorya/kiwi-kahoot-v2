@@ -2,7 +2,6 @@
   "name": "serverkiwi",
   "version": "1.0.0",
   "main": "index.js",
-
   "dependencies": {
     "@babel/runtime": "^7.22.3",
     "body-parser": "^1.18.3",
@@ -31,5 +30,6 @@
   "author": "duyanh",
   "license": "ISC",
   "keywords": [],
+  "devDependencies": {},
   "description": ""
 }
