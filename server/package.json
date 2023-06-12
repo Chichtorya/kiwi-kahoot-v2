@@ -11,6 +11,8 @@
     "engine.io": "^3.2.1",
     "express": "^4.16.3",
     "express-session": "^1.15.6",
+    "greenlock-express": "^2.6.8",
+    "greenlock-store-fs": "^3.2.2",
     "https": "^1.0.0",
     "lodash": "^4.17.10",
     "make-runnable": "^1.4.1",
@@ -24,13 +26,11 @@
     "socket.io-parser": "^2.3.1"
   },
   "scripts": {
-   
     "build": "npm i",
-    "start": "node index.js"
+    "start": "node server.js"
   },
   "author": "duyanh",
   "license": "ISC",
   "keywords": [],
-  "devDependencies": {},
   "description": ""
 }

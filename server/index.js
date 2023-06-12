@@ -21,7 +21,7 @@ const { result } = require('lodash');
     const server = require('http').createServer( 
        app)
     
-    //handle cors
+    // handle cors
     const cors = require('cors');
     app.use(cors({
         origin: "*",
@@ -227,4 +227,7 @@ const { result } = require('lodash');
 
     app.delete('/deletequiz/', quizCtrl.deleteQuiz)
     app.delete('/deletequestion/', quizCtrl.deleteQuestion)
+    
+    module.exports = app;
+
 })()
