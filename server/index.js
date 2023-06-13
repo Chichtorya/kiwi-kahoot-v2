@@ -21,9 +21,7 @@ const { result } = require('lodash');
 
     // handle cors
     const cors = require('cors');
-    app.use(cors({
-        origin: "*",
-    }))
+    
     const server = require('http').createServer(
         app)
 
@@ -33,8 +31,10 @@ const { result } = require('lodash');
 
 
 
-    app.get('/', express.static(path.join(__dirname, "public")));
-
+    // app.get('/', express.static(path.join(__dirname, "public")));
+    app.use(cors({
+        origin: "*",
+    }))
 
     const io = require('socket.io')(server
     )
