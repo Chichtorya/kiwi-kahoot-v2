@@ -18,23 +18,13 @@ const { result } = require('lodash');
     //   }, app)
 
     const app = require('express')()
-
-    // handle cors
-    const cors = require('cors');
-    
     const server = require('http').createServer(
         app)
 
 
-
-
-
-
-
-    // app.get('/', express.static(path.join(__dirname, "public")));
-    app.use(cors({
-        origin: "*",
-    }))
+    // handle cors
+    const cors = require('cors');
+    app.use(cors())
 
     const io = require('socket.io')(server
     )
@@ -123,8 +113,10 @@ const { result } = require('lodash');
         .catch(function (error) {
             console.log('ERROR:', error.message || error);
         });
-    app.set('db', db)
-    app.use(express.static(`${__dirname}/../build`))
+
+    app.set('db', db);
+    app.get('/', express.static(path.join(__dirname, "public")));
+    app.use(express.static(`${__dirname}/../build`));
     app.use(bodyParser.urlencoded({ extended: false }));
     app.use(bodyParser.json());
 
