@@ -22,22 +22,29 @@ const { result } = require('lodash');
     const server = require('http').createServer(
         app)
 
+    // app.use(cors())
+    const corsOptions = {
+        origin: '*',
+        methods: ['GET', 'POST', 'DELETE', 'PUT'],
+        allowedHeaders: '*'
+    };
 
+    app.use(cors(corsOptions));
     // handle cors
 
-    app.use(function (req, res, next) {
-        res.header('Access-Control-Allow-Origin', '*');
-        res.header('Access-Control-Allow-Credentials', 'true');
-        res.header('Access-Control-Allow-Methods', 'GET,HEAD,PUT,PATCH,POST,DELETE');
-        res.header('Access-Control-Expose-Headers', 'Content-Length');
-        res.header('Access-Control-Allow-Headers', 'Accept, Authorization, Content-Type, X-Requested-With, Range');
-        if (req.method === 'OPTIONS') {
-            console.log("some cors");
-            return res.sendStatus(200);
-        } else {
-            return next();
-        }
-    });
+    // app.use(function (req, res, next) {
+    //     res.header('Access-Control-Allow-Origin', '*');
+    //     res.header('Access-Control-Allow-Credentials', 'true');
+    //     res.header('Access-Control-Allow-Methods', 'GET,HEAD,PUT,PATCH,POST,DELETE');
+    //     res.header('Access-Control-Expose-Headers', 'Content-Length');
+    //     res.header('Access-Control-Allow-Headers', 'Accept, Authorization, Content-Type, X-Requested-With, Range');
+    //     if (req.method === 'OPTIONS') {
+    //         console.log("some cors");
+    //         return res.sendStatus(200);
+    //     } else {
+    //         return next();
+    //     }
+    // });
 
     const io = require('socket.io')(server
     )
