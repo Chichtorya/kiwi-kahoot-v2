@@ -198,7 +198,7 @@ const { result } = require('lodash');
 
                         res.status(200).json({
                             message: 'ok',
-                            id: data[0].id
+                            
                         })
                     } else if (data.length === 0) {
 
@@ -208,7 +208,10 @@ const { result } = require('lodash');
                     }
 
                     else {
-                        console.log("holy fuck , why we have 2 user same same")
+                        console.log("holy fuck , why we have 2 user same same"),
+                        res.status(200).json({
+                            message: 'holy fuck , why we have 2 user same same'
+                        })
                     }
                 })
 
