@@ -22,9 +22,9 @@ const { result } = require('lodash');
   
     // app.use(cors())
    
-
+var sol = require('./corsSol.js')
     // use it before all route definitions
-    app.use(cors({origin: 'https://kiwi-kahoot-sv.vercel.app'}));
+    app.use(sol);
    
     const io = require('socket.io')(3030
     )
