@@ -19,9 +19,7 @@ const { result } = require('lodash');
 
     const app = require('express')()
     const cors = require("cors");
-    const server = require('http').createServer(
-        app)
-
+  
     // app.use(cors())
     const corsOptions = {
         origin: 'https://kiwi-kahoot-sv.vercel.app/',
@@ -32,41 +30,15 @@ const { result } = require('lodash');
       const corsMiddleware = cors(corsOptions);
       
       app.use(corsMiddleware);
-    // handle cors
-
-    // app.use(function (req, res, next) {
-    //     res.header('Access-Control-Allow-Origin', '*');
-    //     res.header('Access-Control-Allow-Credentials', 'true');
-    //     res.header('Access-Control-Allow-Methods', 'GET,HEAD,PUT,PATCH,POST,DELETE');
-    //     res.header('Access-Control-Expose-Headers', 'Content-Length');
-    //     res.header('Access-Control-Allow-Headers', 'Accept, Authorization, Content-Type, X-Requested-With, Range');
-    //     if (req.method === 'OPTIONS') {
-    //         console.log("some cors");
-    //         return res.sendStatus(200);
-    //     } else {
-    //         return next();
-    //     }
-    // });
-
-    const io = require('socket.io')(server
+   
+    const io = require('socket.io')(3000
     )
     // for development and debugging
     if (require.main === module) {
-        require('http').createServer(app).listen(3000, function () {
+        require('http').createServer(app).listen(3030, function () {
             console.info("Listening for HTTP on", this.address());
         });
     }
-    // const {
-    //     SERVER_PORT,
-    //     SESSION_SECRET,
-    //     DOMAIN,
-    //     CLIENT_ID,
-    //     CLIENT_SECRET,
-    //     CALLBACK_URL,
-    //     CONNECTION_STRING,
-    //     FRONTEND_URL,
-    // } = require('./cfg.js')
-
 
 
     // server.listen(process.env.SERVER_PORT, '0.0.0.0', function () {
@@ -193,12 +165,6 @@ const { result } = require('lodash');
             })
         }
     })
-
-    // function check(req, res, next) {
-    //     if (req.user) {
-    //         res.redirect(`${process.env.FRONTEND_URL}#/host`)
-    //     } else { next() }
-    // }
 
 
 

@@ -1,6 +1,5 @@
 'use strict';
 
-
 var app = require('./index.js');
 
 require('greenlock-express')
@@ -12,7 +11,7 @@ require('greenlock-express')
         maintainerEmail: "chichtorya@gmail.com",
         // whether or not to run at cloudscale
         cluster: false
-    })
+    }) 
     // Serves on 80 and 443
     // Get's SSL certificates magically!
-    .serve(app);
+    .serve(app)
