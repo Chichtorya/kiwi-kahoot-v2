@@ -21,21 +21,16 @@ const { result } = require('lodash');
     const cors = require("cors");
   
     // app.use(cors())
-    const corsOptions = {
-        origin: 'https://kiwi-kahoot-sv.vercel.app/',
-        methods: 'GET,PUT,POST,DELETE',
-        allowedHeaders: 'Content-Type, Authorization'
-      };
-      
-      const corsMiddleware = cors(corsOptions);
-      
-      app.use(corsMiddleware);
+    var cors = require('cors');
+
+    // use it before all route definitions
+    app.use(cors({origin: 'https://kiwi-kahoot-sv.vercel.app'}));
    
-    const io = require('socket.io')(3000
+    const io = require('socket.io')(3030
     )
     // for development and debugging
     if (require.main === module) {
-        require('http').createServer(app).listen(3030, function () {
+        require('http').createServer(app).listen(3000, function () {
             console.info("Listening for HTTP on", this.address());
         });
     }
