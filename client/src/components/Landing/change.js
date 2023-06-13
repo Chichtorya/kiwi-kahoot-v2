@@ -37,6 +37,7 @@ class change extends Component {
                 .then((res) => {
                     const { message, id } = res.data;
                     if (message === 'ok') {
+                        console.log(' co data')
                         this.props.setIdUser(id);
                     } else {
                         console.log('k co data')
