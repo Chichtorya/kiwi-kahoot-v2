@@ -21,7 +21,7 @@ const { result } = require('lodash');
     const cors = require("cors");
   
     // app.use(cors())
-    var cors = require('cors');
+   
 
     // use it before all route definitions
     app.use(cors({origin: 'https://kiwi-kahoot-sv.vercel.app'}));
