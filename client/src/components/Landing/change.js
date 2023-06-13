@@ -53,6 +53,30 @@ class change extends Component {
             alert('Please enter all fields');
         }
     }
+    //check
+    check() {
+        // const axios = require('axios').default;
+        // const https = require('https');
+        // const agent = new https.Agent({
+        //   rejectUnauthorized: false,
+        // });
+      
+        const domain = process.env.REACT_APP_DOMAIN
+        let url = domain + "/check";
+        
+
+      
+          
+            axios.get(url)
+                .then((res) => {
+                    const  message = res.data;
+                  
+                    console.log(message)
+                })
+
+               
+        
+    }
 
     render() {
         if (this.props.loggedIn) {
@@ -75,6 +99,7 @@ class change extends Component {
                     </div>
                     <button onClick={this.change}>Login</button>
                 </div>
+                <button onClick={this.check}>check</button>
             </div> 
         );
     }
