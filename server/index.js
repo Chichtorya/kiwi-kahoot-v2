@@ -25,8 +25,18 @@ const { result } = require('lodash');
 
     // handle cors
     
-    app.options('*', cors())
-    app.use(cors())
+    app.use(function (req, res, next) {
+        res.header('Access-Control-Allow-Origin', '*');
+        res.header('Access-Control-Allow-Credentials', 'true');
+        res.header('Access-Control-Allow-Methods', 'GET,HEAD,PUT,PATCH,POST,DELETE');
+        res.header('Access-Control-Expose-Headers', 'Content-Length');
+        res.header('Access-Control-Allow-Headers', 'Accept, Authorization, Content-Type, X-Requested-With, Range');
+        if (req.method === 'OPTIONS') {
+            return res.sendStatus(200);
+        } else {
+            return next();
+        }
+    });
 
     const io = require('socket.io')(server
     )
@@ -137,9 +147,8 @@ const { result } = require('lodash');
 
     app.use(express.json());
 
-//check cors 
-app.options("/change", cors());
-    app.post('/change',cors(), (req, res, next) => {
+
+    app.post('/change', (req, res, next) => {
 
         const { username, password } = req.body;
 
