@@ -21,13 +21,15 @@ const { result } = require('lodash');
     const server = require('http').createServer(
         app)
 
-
-    app.get('/', express.static(path.join(__dirname, "public")));
     // handle cors
     const cors = require('cors');
     app.use(cors({
         origin: "*",
     }))
+
+
+
+    app.get('/', express.static(path.join(__dirname, "public")));
 
     const io = require('socket.io')(server
     )
@@ -49,7 +51,7 @@ const { result } = require('lodash');
     // } = require('./cfg.js')
 
 
-    
+
     // server.listen(process.env.SERVER_PORT, '0.0.0.0', function () {
     //     console.log('Server running at ', process.env.SERVER_PORT);
     //     console.log(server.address());
