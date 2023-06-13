@@ -24,7 +24,7 @@ const { result } = require('lodash');
 
 
     // handle cors
-    
+
     app.use(function (req, res, next) {
         res.header('Access-Control-Allow-Origin', '*');
         res.header('Access-Control-Allow-Credentials', 'true');
@@ -32,6 +32,7 @@ const { result } = require('lodash');
         res.header('Access-Control-Expose-Headers', 'Content-Length');
         res.header('Access-Control-Allow-Headers', 'Accept, Authorization, Content-Type, X-Requested-With, Range');
         if (req.method === 'OPTIONS') {
+            console.log("some cors");
             return res.sendStatus(200);
         } else {
             return next();
