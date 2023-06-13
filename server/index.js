@@ -24,12 +24,14 @@ const { result } = require('lodash');
 
     // app.use(cors())
     const corsOptions = {
-        origin: '*',
-        methods: ['GET', 'POST', 'DELETE', 'PUT'],
-        allowedHeaders: '*'
-    };
-
-    app.use(cors(corsOptions));
+        origin: 'https://kiwi-kahoot-sv.vercel.app/',
+        methods: 'GET,PUT,POST,DELETE',
+        allowedHeaders: 'Content-Type, Authorization'
+      };
+      
+      const corsMiddleware = cors(corsOptions);
+      
+      app.use(corsMiddleware);
     // handle cors
 
     // app.use(function (req, res, next) {
