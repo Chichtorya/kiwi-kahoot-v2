@@ -18,18 +18,23 @@ const { result } = require('lodash');
     //   }, app)
 
     const app = require('express')()
-    const server = require('http').createServer(
-        app)
 
     // handle cors
     const cors = require('cors');
     app.use(cors({
         origin: "*",
     }))
+    const server = require('http').createServer(
+        app)
+
+
+
+
 
 
 
     app.get('/', express.static(path.join(__dirname, "public")));
+
 
     const io = require('socket.io')(server
     )
@@ -198,7 +203,7 @@ const { result } = require('lodash');
 
                         res.status(200).json({
                             message: 'ok',
-                            
+
                         })
                     } else if (data.length === 0) {
 
@@ -209,9 +214,9 @@ const { result } = require('lodash');
 
                     else {
                         console.log("holy fuck , why we have 2 user same same"),
-                        res.status(200).json({
-                            message: 'holy fuck , why we have 2 user same same'
-                        })
+                            res.status(200).json({
+                                message: 'holy fuck , why we have 2 user same same'
+                            })
                     }
                 })
 
