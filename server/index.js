@@ -18,7 +18,7 @@ const { result } = require('lodash');
     //   }, app)
 
     const app = require('express')()
-    var cors = require('cors')
+    const cors = require("cors");
     const server = require('http').createServer(
         app)
 
@@ -137,8 +137,9 @@ const { result } = require('lodash');
 
     app.use(express.json());
 
-
-    app.post('/change', (req, res, next) => {
+//check cors 
+app.options("/change", cors());
+    app.post('/change',cors(), (req, res, next) => {
 
         const { username, password } = req.body;
 
