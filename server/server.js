@@ -1,15 +1,18 @@
 'use strict';
-require('greenlock-store-fs')
 
-var green = require('greenlock-express').create({
-  version: 'draft-11',
-  server: 'https://acme-v02.api.letsencrypt.org/directory', // staging
-  email: 'chichtorya@gmail.com', // CHANGE THIS
-  agreeTos: true,
-  approveDomains: ['kiwik.onrender.com', 'www.kiwik.onrender.com'], // CHANGE THIS
-  configDir:  require('path').join(require('os').homedir() , 'acme','etc'),
-  app: require('./index.js'),
-  communityMember: true,
-  store: require('greenlock-store-fs'),
-  //debug: true
-}).listen(80, 443);
+
+var app = require('./index.js');
+
+require('greenlock-express')
+    .init({
+        packageRoot: __dirname,
+
+        // where to look for configuration
+        configDir: './greenlock.d',
+        maintainerEmail: "chichtorya@gmail.com",
+        // whether or not to run at cloudscale
+        cluster: false
+    })
+    // Serves on 80 and 443
+    // Get's SSL certificates magically!
+    .serve(app);

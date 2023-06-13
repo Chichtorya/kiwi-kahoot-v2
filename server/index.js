@@ -18,9 +18,11 @@ const { result } = require('lodash');
     //   }, app)
 
     const app = require('express')()
-    const server = require('http').createServer( 
-       app)
-    
+    const server = require('http').createServer(
+        app)
+
+
+    app.get('/', express.static(path.join(__dirname, "public")));
     // handle cors
     const cors = require('cors');
     app.use(cors({
@@ -29,7 +31,12 @@ const { result } = require('lodash');
 
     const io = require('socket.io')(server
     )
-
+    // for development and debugging
+    if (require.main === module) {
+        require('http').createServer(app).listen(3000, function () {
+            console.info("Listening for HTTP on", this.address());
+        });
+    }
     // const {
     //     SERVER_PORT,
     //     SESSION_SECRET,
@@ -40,10 +47,13 @@ const { result } = require('lodash');
     //     CONNECTION_STRING,
     //     FRONTEND_URL,
     // } = require('./cfg.js')
-    server.listen(process.env.SERVER_PORT, '0.0.0.0', function() {
-        console.log('Server running at ', process.env.SERVER_PORT);
-        console.log(server.address());
-      });
+
+
+    
+    // server.listen(process.env.SERVER_PORT, '0.0.0.0', function () {
+    //     console.log('Server running at ', process.env.SERVER_PORT);
+    //     console.log(server.address());
+    // });
 
     //When a connection to server is made from client
     io.on('connection', socket => {
@@ -176,7 +186,7 @@ const { result } = require('lodash');
 
     //Get
     app.get('/check', (req, res) => {
-      
+
         try {
             db.any("SELECT * FROM users WHERE user_name = 'user1' AND pass = 'pass1'")
                 .then(data => {
@@ -227,7 +237,7 @@ const { result } = require('lodash');
 
     app.delete('/deletequiz/', quizCtrl.deleteQuiz)
     app.delete('/deletequestion/', quizCtrl.deleteQuestion)
-    
+
     module.exports = app;
 
 })()
