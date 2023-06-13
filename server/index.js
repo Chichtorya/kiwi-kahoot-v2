@@ -18,12 +18,14 @@ const { result } = require('lodash');
     //   }, app)
 
     const app = require('express')()
+    var cors = require('cors')
     const server = require('http').createServer(
         app)
 
 
     // handle cors
-    const cors = require('cors');
+    
+    app.options('*', cors())
     app.use(cors())
 
     const io = require('socket.io')(server
