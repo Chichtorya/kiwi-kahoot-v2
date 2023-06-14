@@ -11,32 +11,36 @@ const { result } = require('lodash');
         , { Quiz } = require('./utils/quiz');
 
 
-    // const app = require('express')()
-    // const server = require('https').createServer(  {
-    //     key: fs.readFileSync("./cert/key.pem"),
-    //     cert: fs.readFileSync("./cert/cert.pem"),
-    //   }, app)
-
     const app = require('express')()
     const cors = require("cors");
-  
+
+    const server = require('https').createServer({
+        key: fs.readFileSync("./cert/key.pem"),
+        cert: fs.readFileSync("./cert/cert.pem"),
+    }, app)
+
+
+    server.listen(443, () => {
+        console.log('HTTPS Server running on port 443');
+    });
+
     // app.use(cors())
-   
+
     app.use(function (req, res, next) {
 
         // Website you wish to allow to connect
         res.setHeader('Access-Control-Allow-Origin', '*, https://kiwi-kahoot-sv.vercel.app/, https://kiwi-kahoot-sv.vercel.app');
-    
+
         // Request methods you wish to allow
         res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
-    
+
         // Request headers you wish to allow
         res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
-    
+
         // Set to true if you need the website to include cookies in the requests sent
         // to the API (e.g. in case you use sessions)
         res.setHeader('Access-Control-Allow-Credentials', true);
-    
+
         // Pass to next layer of middleware
         next();
     });
@@ -54,6 +58,20 @@ const { result } = require('lodash');
     //     console.log('Server running at ', process.env.SERVER_PORT);
     //     console.log(server.address());
     // });
+
+
+    //log check req and rep
+    app.use((req, res, next) => {
+        console.log(`${req.method} ${req.url}`);
+        const start = Date.now();
+        res.on('finish', () => {
+            const elapsed = Date.now() - start;
+            console.log(`${res.statusCode} ${res.statusMessage}; ${elapsed} ms`);
+        });
+        next();
+    });
+
+
 
     //When a connection to server is made from client
     io.on('connection', socket => {

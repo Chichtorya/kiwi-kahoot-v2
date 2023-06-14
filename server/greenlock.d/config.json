@@ -1,9 +1,9 @@
 {
   "sites": [
     {
-      "subject": "kiwik.onrender.com",
+      "subject": "https://localhost:443",
       "altnames": [
-        "kiwik.onrender.com"
+        "https://localhost:443"
       ],
       "renewAt": 1
     }
