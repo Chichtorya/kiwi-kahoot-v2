@@ -20,8 +20,9 @@ const { result } = require('lodash');
     }, app)
 
 
-    server.listen(443, () => {
-        console.log('HTTPS Server running on port 443');
+    server.listen(process.env.SERVER_PORT, () => {
+        const { address, port } = server.address();
+        console.log(`Server is running at http://${address}:${port}`);
     });
 
     // app.use(cors())
