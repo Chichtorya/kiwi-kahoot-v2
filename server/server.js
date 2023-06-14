@@ -11,8 +11,13 @@ require('greenlock-express')
         maintainerEmail: "chichtorya@gmail.com",
         // whether or not to run at cloudscale
         cluster: false
-    }) 
+    })
     // Serves on 80 and 443
     // Get's SSL certificates magically!
-    .serve(app)
-      //kiwik.onrender.com
+    .serve(app, function (err, info) {
+        if (err) {
+            console.error(err);
+        } else {
+            console.log(info);
+        }
+    });

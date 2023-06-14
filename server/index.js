@@ -14,16 +14,13 @@ const { result } = require('lodash');
     const app = require('express')()
     const cors = require("cors");
 
-    const server = require('https').createServer({
-        key: fs.readFileSync("./cert/key.pem"),
-        cert: fs.readFileSync("./cert/cert.pem"),
-    }, app)
+    // const server = require('https').createServer({
+    //     key: fs.readFileSync("./cert/key.pem"),
+    //     cert: fs.readFileSync("./cert/cert.pem"),
+    // }, app)
 
 
-    server.listen(process.env.SERVER_PORT, () => {
-        const { address, port } = server.address();
-        console.log(`Server is running at http://${address}:${port}`);
-    });
+    
 
     // app.use(cors())
 

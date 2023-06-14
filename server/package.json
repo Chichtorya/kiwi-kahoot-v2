@@ -28,7 +28,7 @@
   },
   "scripts": {
     "build": "npm i",
-    "start": "node index.js"
+    "start": "node server.js"
   },
   "author": "duyanh",
   "license": "ISC",
