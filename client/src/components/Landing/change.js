@@ -53,7 +53,7 @@ class change extends Component {
     check() {    
         const domain = process.env.REACT_APP_DOMAIN
         let url = domain + "/check";
-          
+        console.log('check url: ', url)
             axios.get(url)
                 .then((res) => {
                     const  message = res.data;
