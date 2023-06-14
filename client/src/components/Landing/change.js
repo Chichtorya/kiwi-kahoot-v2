@@ -20,16 +20,12 @@ class change extends Component {
 
 
     change() {
-        // const axios = require('axios').default;
-        // const https = require('https');
-        // const agent = new https.Agent({
-        //   rejectUnauthorized: false,
-        // });
+      
         const { username, password } = this.state;
 
         const domain = process.env.REACT_APP_DOMAIN
         let url = domain + "/change";
-        
+        console.log(url)
 
         if (username && password) {
           
@@ -54,28 +50,16 @@ class change extends Component {
         }
     }
     //check
-    check() {
-        // const axios = require('axios').default;
-        // const https = require('https');
-        // const agent = new https.Agent({
-        //   rejectUnauthorized: false,
-        // });
-      
+    check() {    
         const domain = process.env.REACT_APP_DOMAIN
         let url = domain + "/check";
-        
-
-      
           
             axios.get(url)
                 .then((res) => {
                     const  message = res.data;
                   
                     console.log(message)
-                })
-
-               
-        
+                }) 
     }
 
     render() {

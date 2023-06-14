@@ -54,7 +54,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
-  "proxy": "http://localhost:3030",
+
   "devDependencies": {
     "assert": "^2.0.0",
     "buffer": "^6.0.3",
